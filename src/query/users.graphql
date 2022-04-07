@@ -1,0 +1,45 @@
+query users {
+    user {
+        id
+        name
+    }
+}
+
+query user($where: user_bool_exp!) {
+    user(where: $where) {
+        id
+        name
+    }
+}
+
+mutation insert_user($objects: [user_insert_input!]!) {
+    insert_user(objects: $objects) {
+        returning {
+            id
+            name
+        }
+    }
+}
+
+mutation update_user_by_pk($pk_columns: user_pk_columns_input!, $set: user_set_input) {
+    update_user_by_pk(pk_columns: $pk_columns, _set: $set) {
+        id
+        name
+    }
+}
+
+
+mutation delete_user_by_pk($id: Int!) {
+    delete_user_by_pk(id: $id) {
+        id
+        name
+    }
+}
+
+#
+#query {
+#    user {
+#        id
+#        name
+#    }
+#}
